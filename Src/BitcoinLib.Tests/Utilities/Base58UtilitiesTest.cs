@@ -7,6 +7,26 @@ namespace BitcoinLib.Tests
     public class Base58UtilitiesTest
     {
         [TestMethod]
+        public void EncodeBase58Test()
+        {
+            var data = HexUtilities.HexStringToBytes("80010966776006953D5567439E5E39F86A0D273BEF");
+            var expected = "8sXcP7DRdQ3HArnsEDVjKLXStwZF4";
+            var actual = Base58Utilities.EncodeBase58(data);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void DecodeBase58Test()
+        {
+            var data = "8sXcP7DRdQ3HArnsEDVjKLXStwZF4";
+            var expected = HexUtilities.HexStringToBytes("80010966776006953D5567439E5E39F86A0D273BEF");
+            var actual = Base58Utilities.DecodeBase58(data);
+            Assert.AreEqual(expected.Length, actual.Length);
+            for (int i = 0; i < expected.Length; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
+
+        [TestMethod]
         public void EncodeBase58CheckVersion0Test()
         {
             // Version 0 (0x00) Prefixes (Bitcoin Addresses)

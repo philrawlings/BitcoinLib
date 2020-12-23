@@ -12,7 +12,7 @@ namespace BitcoinLib
     {
         private const string Base58Values = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 
-        private static string EncodeBase58(byte[] data)
+        public static string EncodeBase58(byte[] data)
         {
             StringBuilder sb = new StringBuilder(33);
             BigInteger dividend = 0;
